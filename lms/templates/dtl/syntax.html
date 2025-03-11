@@ -1,0 +1,21 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Dtl Syntax
+{% endblock title %}
+
+{% block body %}
+{% include "partials/header.html" %}
+<h2> {{ user }} </h2>
+<ol>
+{% for item in cart_items %}
+    <li>{{ item }}</li>
+{% endfor %}
+</ol>
+{% if is_favorite %}
+    <p>Item marked as favorite</p>
+{% else %}
+    <p>Item not marked as favorite</p>
+{% endif %}
+<div>You have {{ no_of_items_in_cart }} items in your cart</div>
+{% endblock body %}
