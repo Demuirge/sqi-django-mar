@@ -1,0 +1,21 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Prices
+{% endblock title %}
+
+{% block body %}
+<h1>Pricing</h1>
+<ol>
+    {% for service, subservice in services.items %}
+        <li>
+            {{ service }} : 
+            <ul> 
+            {% for product, price in subservice.items %}
+                    <li>{{ product }} : {{ price }}</li>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ol>
+{% endblock body %}
