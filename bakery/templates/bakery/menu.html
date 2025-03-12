@@ -1,0 +1,16 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Menu
+{% endblock title %}
+
+{% block body %}
+<div id="menu" class="section menu">
+    <h2>Our Menu</h2>
+    <ul>
+    {% for baked, price in menu.items %}
+        <li>{{ baked }} : {{ price }} </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock body %}
