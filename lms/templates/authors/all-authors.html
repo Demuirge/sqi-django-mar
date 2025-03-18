@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Authors</title>
+</head>
+<body>
+    <h1>All Books</h1>
+    <ul>
+    {% for book in all_books %}
+        <li>{{ book }}</li>
+        {% if book.cover_image %}
+        <img width="100" height="100" src="{{ book.cover_image.url }}" alt="{{ book.title }} Image">
+        {% else %}
+        No Image Found
+        {% endif %}
+    {% endfor %}
+    </ul>
+
+    <h1>Books after 2000</h1>
+    <ul>
+    {% for book in books_after_2000 %}
+        <li> <a href="{% url 'authors:book' book.id %}">{{ book }}</a> : year published {{ book.published_on }}</li>
+    {% endfor %}
+    </ul>
+
+    <h1>First Author</h1>
+    <p>{{ first_author }}</p>
+
+    <h1>Books with Pages greater than 200 publised before 1990</h1>
+    <ul>
+    {% for book in books_gt_200_bf_1990 %}
+        <li>{{ book }} : pages {{ book.number_of_pages }}, year published {{ book.published_on }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
