@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+        }
+
+        header .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        /* Flex container for the unordered list */
+        header nav ul {
+            display: flex;
+            list-style-type: none; /* Removes bullet points */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Flex items for each list item */
+        header nav ul li {
+            margin: 0 10px;
+        }
+
+        /* Styling for each link */
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #555;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            background-color: #888;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header .logo {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+
+            header nav ul {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header nav ul li {
+                margin: 5px 0;
+            }
+
+            header nav ul li a {
+                padding: 10px;
+                margin: 0;
+                width: 100%;
+                text-align: left;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include "partials/header.html" %}
+    <div class="content">
+        {% block body %}{% endblock body %}
+    </div>
+    <footer>
+        <p>&copy; 2025 Your Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

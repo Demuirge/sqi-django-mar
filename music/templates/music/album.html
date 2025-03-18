@@ -1,0 +1,26 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Albums
+{% endblock title %}
+
+{% block body %}
+<h1 style="text-align: center; color: #333; font-size: 2em; margin-bottom: 20px;">Album Listing</h1>
+
+<ul style="list-style-type: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-around;">
+    {% for album in album_listing %}
+        <li style="background-color: #f0f0f0; border-radius: 8px; margin: 10px; padding: 20px; width: 250px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+            <p style="color: #333; font-size: 1.1em; font-weight: bold;">TITLE: 
+                <span style="color: #007bff;">
+                    <a href="{% url 'music:album_detail' album.id %}" style="text-decoration: none; color: inherit;">
+                        {{ album.title }}
+                    </a>
+                </span>
+            </p>
+            <p style="color: #555; font-size: 1em;">RELEASE DATE: <span style="color: #007bff;">{{ album.release_date }}</span></p>
+            <p style="color: #555; font-size: 1em;">ARTIST: <span style="color: #007bff;">{{ album.artist }}</span></p>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock body %}
+

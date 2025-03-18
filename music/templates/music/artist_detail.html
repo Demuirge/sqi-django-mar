@@ -1,0 +1,16 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Artist Detail
+{% endblock title %}
+
+{% block body %}
+<h1>{{ artist.name }}</h1>
+<p> debut on {{ artist.debut }}</p>
+<h2>Albums</h2>
+<ul>
+    {% for album in albums %}
+    <li> {{ album }}, released on {{ album.release_date }} </li>
+    {% endfor %}
+</ul>
+{% endblock body %}

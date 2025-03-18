@@ -1,0 +1,25 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Artists
+{% endblock title %}
+
+{% block body %}
+<h1 style="text-align: center; color: #333; font-size: 2em; margin-bottom: 20px;">Artist Listing</h1>
+
+<ul style="list-style-type: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-around;">
+    {% for artist in artist_listing %}
+        <li style="background-color: #f0f0f0; border-radius: 8px; margin: 10px; padding: 20px; width: 250px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+            <p style="color: #333; font-size: 1.1em; font-weight: bold;">NAME: 
+                <span style="color: #007bff;">
+                    <a href="{% url 'music:artist_detail' artist.id %}" style="text-decoration: none; color: inherit;">
+                        {{ artist }}
+                    </a>
+                </span>
+            </p>
+            <p style="color: #555; font-size: 1em;">DEBUT YEAR: <span style="color: #007bff;">{{ artist.debut }}</span></p>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock body %}
+
