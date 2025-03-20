@@ -1,0 +1,11 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Student Detail
+{% endblock title %}
+
+{% block body %}
+<h1>{{ st_detail.full_name }}</h1>
+<p>Department : {{ st_detail.department}} </p>
+<p>Age : {{ st_detail.age}} </p>
+{% endblock body %}

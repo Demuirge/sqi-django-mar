@@ -22,7 +22,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("music.urls")),
+    path('', include("recipe_app.urls")),
 ]
 
 if settings.DEBUG:

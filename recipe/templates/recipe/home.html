@@ -1,0 +1,20 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Demuirge Recipes
+{% endblock title %}
+
+{% block body %}
+    <section class="hero" style="background-color: #4CAF50; color: white; text-align: center; padding: 4rem 2rem;">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Welcome to Demuirge Cooking Recipes</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Explore a collection of delicious recipes, add your own, and share your culinary creations with the world!</p>
+        <a href="{% url 'recipe:add_recipe' %}" style="background-color: #FFD700; color: #333; padding: 0.8rem 2rem; font-size: 1.2rem; border: none; cursor: pointer; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">Add Your Recipe</a>
+    </section>
+
+    <section class="about" style="background-color: white; padding: 3rem 2rem; text-align: center; margin-top: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">About Us</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">At Demuirge Recipes, we are passionate about food and cooking! Our goal is to bring people together by sharing the joy of cooking. Whether you are a beginner or an experienced chef, you will find inspiring recipes for every occasion.</p>
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">Join our community, share your favorite recipes, discover new ones, and create unforgettable meals. Cooking is more than just following a recipe—it's about creativity, love, and bringing people together!</p>
+        <a href="{% url 'recipe:recipes' %}" style="background-color: #FFD700; color: #333; padding: 0.8rem 2rem; font-size: 1.2rem; border: none; cursor: pointer; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">Browse Recipes</a>
+    </section>
+{% endblock body %}

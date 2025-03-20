@@ -1,0 +1,14 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Departments
+{% endblock title %}
+
+{% block body %}
+<h1>All Departments</h1>
+<ul>
+    {% for department in all_departments %}
+    <li> <a href="{% url 'lesson:department_detail' department.id %}">{{ department }}</a> </li>
+    {% endfor %}
+</ul>
+{% endblock body %}

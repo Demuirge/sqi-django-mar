@@ -1,16 +1,41 @@
 {% extends "partials/base.html" %}
 
 {% block title %}
-Artist Detail
+Artist Detail - {{ artist.name }}
 {% endblock title %}
 
 {% block body %}
-<h1>{{ artist.name }}</h1>
-<p> debut on {{ artist.debut }}</p>
-<h2>Albums</h2>
-<ul>
-    {% for album in albums %}
-    <li> {{ album }}, released on {{ album.release_date }} </li>
-    {% endfor %}
-</ul>
+<div style="text-align: center; padding: 20px;">
+    <h1 style="color: #333; font-size: 2.5em; margin-bottom: 20px;">{{ artist.name }}</h1>
+    
+    <!-- Artist Image -->
+    {% if artist.image %}
+        <div style="margin-bottom: 20px;">
+            <img src="{{ artist.image.url }}" alt="{{ artist.name }} Image" style="max-width: 300px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        </div>
+    {% endif %}
+    
+    <p style="font-size: 1.2em; color: #555;">Debut: <span style="color: #007bff;">{{ artist.debut }}</span></p>
+    
+    <h2 style="font-size: 1.8em; color: #333; margin-top: 40px;">Albums</h2>
+    
+    <!-- Albums Listing -->
+    <ul style="list-style-type: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center;">
+        {% for album in albums %}
+            <li style="background-color: #f0f0f0; border-radius: 8px; margin: 10px; padding: 15px; width: 220px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <p style="color: #333; font-size: 1.1em; font-weight: bold;">Album: <span style="color: #007bff;">{{ album.title }}</span></p>
+                <p style="color: #555; font-size: 1em;">Released: <span style="color: #007bff;">{{ album.release_date }}</span></p>
+                
+                {% if album.cover_image %}
+                    <!-- Album Cover Image -->
+                    <div style="text-align: center; margin-top: 10px;">
+                        <a href="{{ album.cover_image.url }}" target="_blank">
+                            <img src="{{ album.cover_image.url }}" alt="{{ album.title }} Cover" style="max-width: 100%; border-radius: 8px;">
+                        </a>
+                    </div>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock body %}

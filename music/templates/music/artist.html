@@ -18,8 +18,18 @@ Artists
                 </span>
             </p>
             <p style="color: #555; font-size: 1em;">DEBUT YEAR: <span style="color: #007bff;">{{ artist.debut }}</span></p>
+            
+            <!-- Image link below the artist's debut year -->
+            {% if artist.image %}
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="{{ artist.image.url }}" target="_blank">
+                        <img src="{{ artist.image.url }}" alt="{{ artist }}" style="max-width: 100%; border-radius: 8px;">
+                    </a>
+                </div>
+            {% endif %}
         </li>
     {% endfor %}
 </ul>
 {% endblock body %}
+
 

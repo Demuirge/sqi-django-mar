@@ -19,8 +19,18 @@ Albums
             </p>
             <p style="color: #555; font-size: 1em;">RELEASE DATE: <span style="color: #007bff;">{{ album.release_date }}</span></p>
             <p style="color: #555; font-size: 1em;">ARTIST: <span style="color: #007bff;">{{ album.artist }}</span></p>
+            
+            <!-- Image link below the album details -->
+            {% if album.cover_image %}
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="{{ album.cover_image.url }}" target="_blank">
+                        <img src="{{ album.cover_image.url }}" alt="{{ album.title }} Cover" style="max-width: 100%; border-radius: 8px;">
+                    </a>
+                </div>
+            {% endif %}
         </li>
     {% endfor %}
 </ul>
 {% endblock body %}
+
 

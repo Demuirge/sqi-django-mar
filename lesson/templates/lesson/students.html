@@ -1,0 +1,14 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Students
+{% endblock title %}
+
+{% block body %}
+<h1>All Students</h1>
+<ul>
+    {% for student in all_students %}
+    <li> <a href="{% url 'lesson:student_detail' student.id %}">{{ student }}</a> </li>
+    {% endfor %}
+</ul>
+{% endblock body %}
