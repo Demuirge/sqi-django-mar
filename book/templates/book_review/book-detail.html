@@ -1,0 +1,104 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% load review_extras %}
+
+{% block title %}
+Book Details and Reviews
+{% endblock title %}
+
+{% block body %}
+<section class="book-detail-container">
+    <h1 class="book-detail-title">{{ bk_detail.title }}</h1>
+
+    {% if bk_detail.book_image %}
+    <img class="book-detail-image" src="{{ bk_detail.book_image.url }}" alt="{{ bk_detail.title }}'s Image">
+    {% endif %}
+    
+    <p class="book-detail-author">By <strong>{{ bk_detail.author }}</strong></p>
+    <p class="book-detail-date">Published on {{ bk_detail.publication_date }}</p>
+
+    <h2 class="book-detail-reviews-title">Reviews for {{ bk_detail.title }}</h2>
+    <div class="book-detail-reviews">
+        {% if not reviews %}
+        <p class="book-detail-no-reviews">No Reviews found</p>
+        {% else %}
+        <div class="book-detail-reviews-list">
+            {% for review in reviews %}
+            <div class="book-detail-review-card">
+                <div class="book-detail-review-header">
+                    <span class="book-detail-reviewer-name">{{ review.reviewer_name }}</span>
+                    <span class="book-detail-rating">{{ review.rating|star_rating }}</span>
+                </div>
+                <p class="book-detail-review-comment">{{ review.comment }}</p>
+                <span class="book-detail-review-date">Reviewed on {{ review.created_at }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Button to Show Review Form -->
+    <button class="book-detail-show-review-button" onclick="toggleReviewForm()">Write a Review</button>
+
+    <!-- Hidden Review Form -->
+    <div id="reviewFormContainer" class="book-detail-form-container" style="{% if form2.errors %}display: block;{% else %}display: none;{% endif %}">
+        <h2>Make a review for {{ bk_detail.title }}</h2>
+        <form action="{% url 'book_review:review' bk_detail.id %}" method="POST" enctype="multipart/form-data" class="book-detail-form">
+            {% csrf_token %}
+
+            <!-- Non-field Errors -->
+            {% if form2.non_field_errors %}
+            <ul class="book-detail-error-list">
+                {% for error in form2.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <!-- Select Field for Book (Disabled, but submits using a hidden input) -->
+            <div class="book-detail-form-group">
+                <label for="book">Book</label>
+                <select name="book" id="book" disabled>
+                    {% for book in books %}
+                        <option value="{{ book.id }}" {% if book.id == bk_detail.id %}selected{% endif %}> {{ book.title }} </option>
+                    {% endfor %}
+                </select>
+                <input type="hidden" name="book" value="{{ bk_detail.id }}">
+            </div>
+
+            <!-- Reviewer's Name -->
+            <div class="book-detail-form-group">
+                <label for="reviewer_name">Reviewer's Name</label>
+                <input type="text" name="reviewer_name" id="reviewer_name" value="{{ form2.reviewer_name.value|default_if_none:'' }}" required>
+                {% for error in form2.reviewer_name.errors %}
+                    <p class="book-detail-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <!-- Review Rating -->
+            <div class="book-detail-form-group">
+                <label for="rating">Reviewer's Rating</label>
+                <input type="number" name="rating" id="rating" value="{{ form2.rating.value|default_if_none:'' }}" required min="1" max="5">
+                {% for error in form2.rating.errors %}
+                    <p class="book-detail-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <!-- Review Comment -->
+            <div class="book-detail-form-group">
+                <label for="comment">Review</label>
+                <textarea name="comment" id="comment" required>{{ form2.comment.value|default_if_none:'' }}</textarea>
+                {% for error in form2.comment.errors %}
+                    <p class="book-detail-error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="book-detail-submit-button">Add Review</button>
+        </form>
+
+    </div>
+</section>
+
+<!-- Link External JavaScript File -->
+<script src="{% static 'js/book_detail.js' %}"></script>
+{% endblock body %}

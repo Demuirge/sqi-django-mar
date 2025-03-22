@@ -1,0 +1,55 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Book Form
+{% endblock title %}
+
+{% block body %}
+<section class="book-form-container">
+    <h1 class="book-form-title">Add a Book</h1>
+    
+    <form action="{% url 'book_review:book_form' %}" method="POST" enctype="multipart/form-data" class="book-form">
+        {% csrf_token %}
+
+        <!-- Display Non-Field Errors -->
+        {% if form.non_field_errors %}
+        <ul class="book-form-error-list">
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class="book-form-group">
+            <label for="title" class="book-form-label">Book Title</label>
+            <input type="text" name="title" id="title" value="{{ form.title.value|default_if_none:'' }}" required class="book-form-input">
+            {% for error in form.title.errors %}
+                <p class="book-form-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="book-form-group">
+            <label for="author" class="book-form-label">Book Author</label>
+            <input type="text" name="author" id="author" value="{{ form.author.value|default_if_none:'' }}" required class="book-form-input">
+            {% for error in form.author.errors %}
+                <p class="book-form-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="book-form-group">
+            <label for="publication_date" class="book-form-label">Publication Date</label>
+            <input type="date" name="publication_date" id="publication_date" value="{{ form.publication_date.value|default_if_none:'' }}" required class="book-form-input">
+            {% for error in form.publication_date.errors %}
+                <p class="book-form-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="book-form-group">
+            <label for="book_image" class="book-form-label">Book Image</label>
+            <input type="file" name="book_image" id="book_image" class="book-form-file">
+        </div>
+
+        <button type="submit" class="book-form-button">Add Book</button>
+    </form>
+</section>
+{% endblock body %}

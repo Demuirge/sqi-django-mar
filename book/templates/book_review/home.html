@@ -1,0 +1,28 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Demuirgos Library
+{% endblock title %}
+
+{% block body %}
+<section class="home-hero">
+    <h1 class="home-title">Welcome to Demuirgos Library</h1>
+    <p class="home-subtitle">Your gateway to the world of knowledge and storytelling.</p>
+    <a href="{% url 'book_review:books' %}" class="home-button">Explore Books</a>
+</section>
+
+<section class="home-features">
+    <div class="home-feature">
+        <h3>📚 Vast Collection</h3>
+        <p>Browse through an extensive selection of books across various genres.</p>
+    </div>
+    <div class="home-feature">
+        <h3>⭐ Review & Rate</h3>
+        <p>Express your thoughts and rate books to help others find their next read.</p>
+    </div>
+    <div class="home-feature">
+        <h3>🎯 Personalized Recommendations</h3>
+        <p>Get book suggestions based on your interests and reading habits.</p>
+    </div>
+</section>
+{% endblock body %}
