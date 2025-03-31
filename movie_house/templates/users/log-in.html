@@ -1,0 +1,48 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Log In
+{% endblock title %}
+
+{% block body %}
+<div class="log-container">
+    <h1 class="log-title">Log In</h1>
+    <form action="{% url 'users:log_in' %}" method="POST" class="log-form">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="log-error">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="log-input-group">
+            <label for="username" class="log-label">Username: </label>
+            <input type="text" name="username" value="{{ form.username.value|default_if_none:'' }}" class="log-input">
+            <div class="log-error">
+                {% for error in form.username.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="log-input-group">
+            <label for="password" class="log-label">Password: </label>
+            <input type="password" name="password" class="log-input">
+            <div class="log-error">
+                {% for error in form.password.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="submit" class="log-button">Log In</button>
+    </form>
+
+    <div class="log-footer">Don't have an account yet? 
+        <a href="{% url 'users:sign_up' %}" class="log-link">Sign Up</a>
+    </div>
+</div>
+{% endblock body %}

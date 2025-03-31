@@ -1,0 +1,14 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Update Review
+{% endblock title %}
+
+{% block body %}
+<h1>Update Review for {{ review.book.title }}</h1>
+<form action="{% url 'book_review:update_review' review.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Review</button>
+</form>
+{% endblock body %}

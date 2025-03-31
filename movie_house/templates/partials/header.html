@@ -1,0 +1,23 @@
+<header class="main-header">
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="{% url 'movie:home' %}" class="nav-item">Home</a></li>
+            <li><a href="{% url 'movie:movies' %}" class="nav-item">Movies</a></li>
+            <li>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'movie:add_movie' %}" class="nav-item">Add Movie</a>
+                {% endif %}
+            </li>
+            <li>
+                {% if not request.user.is_authenticated %}
+                <a href="{% url 'users:sign_up' %}" class="nav-item">Sign Up</a>
+                {% endif %}
+            </li>
+            <li>
+                {% if not request.user.is_authenticated %}
+                <a href="{% url 'users:log_in' %}" class="nav-item">Log In</a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+</header>

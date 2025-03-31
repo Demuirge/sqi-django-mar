@@ -1,0 +1,19 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Category
+{% endblock title %}
+
+{% block body %}
+<h1>Search by Category</h1>
+<div>{{ category }}</div> 
+<ul>
+    {% for note in notes %}
+    <li>
+        <h3>{{ note.title }}</h3>
+        <p> {{ note.category }} </p>
+        <p> {{ note.creation_date }} </p>
+    </li>
+    {% endfor %}
+</ul> 
+{% endblock body %}

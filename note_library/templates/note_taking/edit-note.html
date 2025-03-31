@@ -1,0 +1,14 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Edit Note
+{% endblock title %}
+
+{% block body %}
+<h1>Create {{note.title}}</h1>
+<form action="{% url 'note_taking:edit_note' note.id %}" method = "POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Edit Note</button>
+</form>
+{% endblock body %}

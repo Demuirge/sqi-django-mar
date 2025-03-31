@@ -1,0 +1,18 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Your notes
+{% endblock title %}
+
+{% block body %}
+<h1>Your Notes</h1>
+<ul>
+    {% for note in notes %}
+    <li>
+        <h3>{{ note.title }}</h3>
+        <p> {{ note.category }} </p>
+        <p> {{ note.creation_date }} </p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock body %}

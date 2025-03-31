@@ -1,0 +1,47 @@
+{% extends "partials/base.html" %}
+{% block title %}Sign Up{% endblock title %}
+
+{% block body %}
+<div class="sign-container">
+    <form action="{% url 'users:sign_up' %}" method="POST" class="sign-form">
+        <h1>Sign Up</h1>
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="sign-error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <div class="sign-input-container">
+            <label for="username" class="sign-label">Username:</label>
+            <input type="text" name="username" value="{{ form.username.value|default_if_none:'' }}" class="sign-input">
+            {% for error in form.username.errors %}
+                <p class="sign-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="sign-input-container">
+            <label for="password1" class="sign-label">Password:</label>
+            <input type="password" name="password1" class="sign-input">
+            {% for error in form.password1.errors %}
+                <p class="sign-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="sign-input-container">
+            <label for="password2" class="sign-label">Confirm Password:</label>
+            <input type="password" name="password2" class="sign-input">
+            {% for error in form.password2.errors %}
+                <p class="sign-error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="sign-button">Create Account</button>
+    </form>
+
+    <div class="sign-login-link">
+        Already have an account? <a href="{% url 'users:log_in' %}">Log In</a>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,35 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Update Review Manually
+{% endblock title %}
+
+{% block body %}
+<form action="{% url 'book_review:update_review_manual' review.id %}" method="POST">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        <ul class="book-detail-error-list">
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="book-detail-form-group">
+        <label for="rating">Reviewer's Rating</label>
+        <input type="number" name="rating" id="rating" value="{{ form.rating.value|default_if_none:'' }}" required min="1" max="5">
+        {% for error in form.rating.errors %}
+            <p class="book-detail-error">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <!-- Review Comment -->
+    <div class="book-detail-form-group">
+        <label for="comment">Review</label>
+        <textarea name="comment" id="comment" required>{{ form.comment.value|default_if_none:'' }}</textarea>
+        {% for error in form.comment.errors %}
+            <p class="book-detail-error">{{ error }}</p>
+        {% endfor %}
+    </div>
+    <button type="submit">Update Review</button>
+</form>
+{% endblock body %}

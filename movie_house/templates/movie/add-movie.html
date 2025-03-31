@@ -1,0 +1,67 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Add Movie
+{% endblock title %}
+
+{% block body %}
+<div class="form-container">
+    <h1>Add a Movie</h1>
+    <form action="{% url 'movie:add_movie' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <ul style="color: red; font-size: 0.9rem;">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% for error in form.title.errors %}
+            <p style="color: red; font-size: 0.9rem;">{{ error }}</p>
+        {% endfor %}
+
+        <label for="id_title">Title:</label>
+        <input type="text" id="id_title" name="title" value="{{ form.title.value|default_if_none:'' }}" required>
+
+        {% for error in form.director.errors %}
+            <p style="color: red; font-size: 0.9rem;">{{ error }}</p>
+        {% endfor %}
+        <label for="id_director">Director:</label>
+        <input type="text" id="id_director" name="director" value="{{ form.director.value|default_if_none:'' }}" required>
+
+
+        {% for error in form.release_date.errors %}
+            <p style="color: red; font-size: 0.9rem;">{{ error }}</p>
+        {% endfor %}
+        <label for="id_release_date">Release Date:</label>
+        <input type="date" id="id_release_date" name="release_date" value="{{ form.release_date.value|default_if_none:'' }}" required>
+
+
+        {% for error in form.genre.errors %}
+            <p style="color: red; font-size: 0.9rem;">{{ error }}</p>
+        {% endfor %}
+        <label for="id_genre">Genre:</label>
+        <select id="id_genre" name="genre" required>
+            {% for choice in form.genre.field.choices %}
+                <option value="{{ choice.0 }}" {% if form.genre.value == choice.0 %}selected{% endif %}>
+                    {{ choice.1 }}
+                </option>
+            {% endfor %}
+        </select>
+
+
+        {% for error in form.synopsis.errors %}
+            <p style="color: red; font-size: 0.9rem;">{{ error }}</p>
+        {% endfor %}
+        <label for="id_synopsis">Synopsis:</label>
+        <textarea id="id_synopsis" name="synopsis" rows="5" required>{{ form.synopsis.value|default_if_none:'' }}</textarea>
+
+        <label for="id_poster">Poster:</label>
+        <input type="file" id="id_poster" name="poster" accept="image/*">
+
+        <button type="submit">Add Movie</button>
+    </form>
+</div>
+{% endblock body %}

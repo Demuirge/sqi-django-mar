@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}?v=3">
+</head>
+<body>
+    <div class="wrapper">
+        {% include "partials/header.html" %}
+
+        {% if request.user.is_authenticated %}
+        <div class="logout-container">
+            <form action="{% url 'users:log_out' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="log-out-nav-item">Log Out</button>
+            </form>
+        </div>
+        {% endif %}
+
+
+        {% if messages %}
+            <ul class="log-out-ul">
+                {% for message in messages %}
+                <li class = "message {{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <main class="content">
+            {% block body %}{% endblock body %}
+        </main>
+
+        {% include "partials/footer.html" %}
+    </div>
+</body>
+</html>
+

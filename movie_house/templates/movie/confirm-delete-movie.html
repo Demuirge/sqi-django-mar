@@ -1,0 +1,16 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Confirm Movie Delete
+{% endblock title %}
+
+{% block body %}
+<div class="delete-warning">
+    <h1>Are you sure you want to delete "{{ movie.title }}"?</h1>
+    <form action="{% url 'movie:delete_movie' movie.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-delete">Yes, I am sure</button>
+    </form>
+    <a href="{% url 'movie:movie' movie.id %}" class="btn btn-cancel">No, take me back</a>
+</div>
+{% endblock body %}

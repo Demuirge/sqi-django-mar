@@ -1,0 +1,725 @@
+/* ==========================
+   GLOBAL STYLES
+   ========================== */
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
+a:hover {
+    color: #0056b3;
+}
+
+/* ==========================
+   HOME PAGE STYLES
+   ========================== */
+.home-container {
+    text-align: center;
+    padding: 50px;
+}
+
+/* ==========================
+   MOVIES PAGE STYLES
+   ========================== */
+.movie-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+.movie-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    text-align: center;
+}
+.movie-card:hover {
+    transform: scale(1.05);
+}
+.movie-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+.movie-slider img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.movie-slider img:hover {
+    transform: scale(1.1);
+}
+
+/* ==========================
+   INDIVIDUAL MOVIE PAGE STYLES
+   ========================== */
+.movie-details {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.movie-details img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* ==========================
+   ADD & EDIT MOVIE PAGE STYLES
+   ========================== */
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================
+   DELETE MOVIE PAGE STYLES
+   ========================== */
+.delete-warning {
+    text-align: center;
+    background: #ffdddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 400px;
+}
+.delete-warning button {
+    background-color: red;
+}
+.delete-warning button:hover {
+    background-color: darkred;
+}
+/* ==========================
+   HEADER STYLES
+   ========================== */
+   .main-header {
+    background-color: #222;
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s, transform 0.2s;
+    border-radius: 5px;
+}
+
+.nav-item:hover {
+    background: #007bff;
+    transform: scale(1.1);
+}
+/* ==========================
+   FOOTER STYLES
+   ========================== */
+   .main-footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+/* ==========================
+   LAYOUT FIXES FOR FOOTER
+   ========================== */
+   html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the wrapper takes full height */
+}
+
+.content {
+    flex: 1; /* Pushes the footer to the bottom */
+    padding: 20px;
+}
+
+/* ==========================
+   FOOTER STYLES
+   ========================== */
+.main-footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+}
+/* ==========================
+   HOME PAGE STYLES
+   ========================== */
+   .home-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.home-container h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+}
+
+.home-container p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Featured Movies Section */
+.featured-movies {
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.movie-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+    gap: 15px;
+    justify-content: center;
+}
+
+.movie-slider img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.movie-slider img:hover {
+    transform: scale(1.1);
+}
+
+/* Call-To-Action Section */
+.cta-section {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background 0.3s, transform 0.2s;
+    margin: 10px;
+}
+
+.cta-button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.cta-button.secondary {
+    background: #28a745;
+}
+
+.cta-button.secondary:hover {
+    background: #218838;
+}
+/* ==========================
+   MOVIE PAGE STYLES
+   ========================== */
+   .movie-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: white;
+    transition: background 0.3s, transform 0.2s;
+    margin: 10px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Edit Button */
+.btn-edit {
+    background: #007bff;
+}
+
+.btn-edit:hover {
+    background: #0056b3;
+}
+
+/* Delete Button */
+.btn-delete {
+    background: #dc3545;
+}
+
+.btn-delete:hover {
+    background: #b52b3a;
+}
+/* ==========================
+   DELETE CONFIRMATION PAGE
+   ========================== */
+   .delete-warning {
+    text-align: center;
+    background: #ffdddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: white;
+    transition: background 0.3s, transform 0.2s;
+    margin: 10px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Delete (Yes) Button */
+.btn-delete {
+    background: #dc3545;
+}
+
+.btn-delete:hover {
+    background: #b52b3a;
+}
+
+/* Cancel (No) Button */
+.btn-cancel {
+    background: #28a745;
+}
+
+.btn-cancel:hover {
+    background: #218838;
+}
+/* ==========================
+   FORM STYLES
+   ========================== */
+   .form-container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.form-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+.form-container label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #555;
+}
+.form-container input, 
+.form-container textarea, 
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+.form-container input:focus, 
+.form-container textarea:focus, 
+.form-container select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.form-container button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+/* ==========================
+   IMAGE SLIDER FIX
+   ========================== */
+   .movie-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+    gap: 15px;
+    justify-content: flex-start;
+    white-space: nowrap; /* Ensures images stay in a row */
+}
+
+.movie-slider img {
+    width: 200px; /* Set a fixed width */
+    height: 300px; /* Set a fixed height */
+    object-fit: cover; /* Ensures images scale properly */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    flex-shrink: 0; /* Prevents images from shrinking */
+}
+
+.movie-slider img:first-child {
+    margin-left: 10px; /* Adds space so the first image doesn't get cut off */
+}
+
+.movie-slider img:hover {
+    transform: scale(1.1);
+}
+/* ==========================
+   SIGN-UP PAGE STYLES
+   ========================== */
+
+.sign-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100vh !important;
+    background: linear-gradient(to right, #4facfe, #00f2fe) !important;
+}
+
+.sign-form {
+    background: #fff !important;
+    padding: 30px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    width: 350px !important;
+    text-align: center !important;
+}
+
+.sign-form h1 {
+    font-size: 24px !important;
+    margin-bottom: 20px !important;
+    color: #333 !important;
+}
+
+.sign-input-container {
+    margin-bottom: 15px !important;
+    text-align: left !important;
+}
+
+.sign-label {
+    font-weight: bold !important;
+    display: block !important;
+    margin-bottom: 5px !important;
+    color: #555 !important;
+}
+
+.sign-input {
+    width: 100% !important;
+    padding: 10px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 5px !important;
+    font-size: 16px !important;
+    transition: border-color 0.3s !important;
+}
+
+.sign-input:focus {
+    border-color: #4facfe !important;
+    outline: none !important;
+}
+
+.sign-button {
+    width: 100%;
+    padding: 10px;
+    background: #4facfe;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sign-button:hover {
+    background: #00c6ff;
+}
+
+.sign-error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.sign-login-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.sign-login-link a {
+    color: #4facfe;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sign-login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Log In Page Styles */
+.log-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.log-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.log-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.log-input-group {
+    text-align: left;
+}
+
+.log-label {
+    font-weight: bold;
+    display: block;
+}
+
+.log-input {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.log-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.log-button:hover {
+    background-color: #0056b3;
+}
+
+.log-error p {
+    color: red;
+    font-size: 14px;
+}
+
+.log-footer {
+    margin-top: 15px;
+}
+
+.log-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.log-link:hover {
+    text-decoration: underline;
+}
+
+/* Logout button container */
+.logout-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+}
+
+/* Logout button */
+.log-out-nav-item {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.log-out-nav-item:hover {
+    background-color: #cc0000;
+}
+
+/* Messages */
+.log-out-ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 10px auto;
+    width: 80%;
+}
+
+.message {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Different colors for different message levels */
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.message.info {
+    background-color: #cce5ff;
+    color: #004085;
+    border: 1px solid #b8daff;
+}
+
+/* to align movie poster and title */
+.movie-parent {
+    /* background-color: red;
+    border: 10px solid white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* cahnge */
+
+.movie-house {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.movie-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; /* Adjust width as needed */
+    text-align: center;
+}
+
+/* .movie-slider img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.movie-card {
+    margin-top: 10px;
+} */
+
+
+
+
+
